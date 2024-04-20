@@ -1,2 +1,2 @@
 # case-consignado
-Case do Projeto de Consignado
+Projeto Case Consignado
