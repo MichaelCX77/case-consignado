@@ -1,0 +1,1 @@
+insert into user (email, name, password) values('consignado@api.com','consignado api','$2a$10$Qnfg4.xCoyef1Mg1SvSvfeVH4.Z8MQGNt.E/2PRSJ3P9v6f7cRo/C')
