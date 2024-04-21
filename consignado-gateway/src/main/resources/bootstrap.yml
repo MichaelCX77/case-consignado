@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: 'api-gateway'
+  cloud:
+    config:
+      uri: 'http://localhost:8888'
+server:
+  port: 8765
+eureka:
+  client:
+    service-url:
+      defaultZone: 'http://localhost:8761/eureka'
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+zuul:
+  routes:
+  
+    oauth:
+      service-id: 'consignado-oauth'
+      path: '/consignado-oauth/**'
+      sensitive-headers:
+      - Cookie
+      - Set-Cookie
+      
+    register:
+      service-id: 'consignado-register'
+      path: '/consignado-register/**'
+      
+#    payment:
+#      service-id: 'consignado-payment'
+#      path: '/consignado-payment/**'
+#      
+#    catalog:
+#      service-id: 'consignado-catalog'
+#      path: '/consignado-catalog/**'
