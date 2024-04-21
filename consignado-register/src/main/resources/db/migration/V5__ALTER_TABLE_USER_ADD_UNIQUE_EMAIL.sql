@@ -1,1 +1,0 @@
-alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)

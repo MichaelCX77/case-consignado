@@ -1,4 +1,4 @@
-package com.consignadoregister.entity;
+package com.consignadoregister.model;
 
 import java.io.Serializable;
 import java.util.HashSet;
