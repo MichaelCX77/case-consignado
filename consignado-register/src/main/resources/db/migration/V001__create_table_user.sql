@@ -3,4 +3,4 @@ create table user (
     email varchar(255) unique,
     name varchar(255),
     password varchar(255)
-)
+);

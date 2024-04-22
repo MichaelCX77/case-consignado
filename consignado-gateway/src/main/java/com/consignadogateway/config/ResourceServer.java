@@ -44,7 +44,8 @@ public class ResourceServer extends ResourceServerConfigurerAdapter {
 		
 		URL_ADMIN = new String[]{ 
 				"/consignado-register/users/**",
-				"/consignado-register/roles/**" 
+				"/consignado-register/roles/**", 
+				"/consignado-client/**"
 				};
 
 	}

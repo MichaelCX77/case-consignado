@@ -30,9 +30,9 @@ zuul:
       service-id: 'consignado-register'
       path: '/consignado-register/**'
       
-#    payment:
-#      service-id: 'consignado-payment'
-#      path: '/consignado-payment/**'
+    cliente:
+      service-id: 'consignado-cliente'
+      path: '/consignado-cliente/**'
 #      
 #    catalog:
 #      service-id: 'consignado-catalog'
