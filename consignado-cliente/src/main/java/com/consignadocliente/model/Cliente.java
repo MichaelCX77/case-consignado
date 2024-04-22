@@ -12,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
 
 import com.consignadocliente.util.EnumCorrentista;
 
@@ -31,7 +30,7 @@ public class Cliente implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cliente_id")
-	private long id;
+	private Long id;
 	
 	@Column(name = "cliente_cpf", unique = true)
 	private String cpf;
@@ -40,16 +39,15 @@ public class Cliente implements Serializable{
 	private String nome;
 	
 	@Column(name = "cliente_correntista")
-	@NotNull
 	@Enumerated(EnumType.STRING)
 	private EnumCorrentista isCorrentista;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "segmento_tipo")
-	private Segmento segmentoTipo;
+	private Segmento segmento;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "convenio_tipo")
-	private Convenio convenioTipo;
+	private Convenio convenio;
 	
 }

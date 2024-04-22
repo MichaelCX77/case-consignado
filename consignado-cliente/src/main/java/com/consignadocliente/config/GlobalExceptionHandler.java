@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.consignadocliente.exception.IllegalArgumentException;
 import com.consignadocliente.exception.DataIntegrityViolationException;
 import com.consignadocliente.exception.ResourceNotFoundException;
 import com.consignadocliente.util.ErrorResponse;
@@ -63,6 +64,15 @@ public class GlobalExceptionHandler {
     public ErrorResponse handleHttpMessageNotReadableException(MismatchedInputException ex) {
     	
         return new ErrorResponse(HttpStatus.BAD_REQUEST.value(), "Requisição inválida : " + ex.getMessage(), System.currentTimeMillis());
+
+    }
+    
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public ErrorResponse handleIllegalArgumentException(IllegalArgumentException ex) {
+    	
+        return new ErrorResponse(HttpStatus.BAD_REQUEST.value(), "Fomato inválido / " + ex.getMessage(), System.currentTimeMillis());
 
     }
 }
