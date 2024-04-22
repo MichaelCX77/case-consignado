@@ -4,14 +4,17 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
+
+import com.consignadocliente.util.EnumCorrentista;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,28 +31,25 @@ public class Cliente implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cliente_id")
-	private long clienteId;
+	private long id;
 	
 	@Column(name = "cliente_cpf", unique = true)
-	private String clienteCpf;
+	private String cpf;
 	
 	@Column(name = "cliente_nome")
-	private String clienteNome;
+	private String nome;
 	
 	@Column(name = "cliente_correntista")
 	@NotNull
-	private Character clienteCorrentista;
+	@Enumerated(EnumType.STRING)
+	private EnumCorrentista isCorrentista;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinTable(name= "ClienteSegmento",
-			joinColumns = @JoinColumn(name = "cliente_segmento_tipo"),
-			inverseJoinColumns = @JoinColumn(name = "segmento_tipo"))
-	private Segmento clienteSegmentoTipo;
+	@JoinColumn(name = "segmento_tipo")
+	private Segmento segmentoTipo;
 	
-	@Column(name = "cliente_convenio_tipo")
-	@JoinTable(name= "ClienteConvenio",
-			joinColumns = @JoinColumn(name = "cliente_convenio_tipo"),
-			inverseJoinColumns = @JoinColumn(name = "convenio_tipo"))
-	private Convenio clienteConvenioTipo;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "convenio_tipo")
+	private Convenio convenioTipo;
 	
 }

@@ -1,17 +1,15 @@
-package com.consignadogateway;
+package com.consignadosimulacao;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 @SpringBootApplication
-@EnableZuulProxy
 @EnableEurekaClient
-public class ConsignadoGatewayApplication {
-
+public class ConsignadoSimulacaoApplication {
+	
 	public static void main(String[] args) {
-		SpringApplication.run(ConsignadoGatewayApplication.class, args);
+		SpringApplication.run(ConsignadoSimulacaoApplication.class, args);
 	}
 
 }

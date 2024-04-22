@@ -33,7 +33,7 @@ zuul:
     cliente:
       service-id: 'consignado-cliente'
       path: '/consignado-cliente/**'
-#      
-#    catalog:
-#      service-id: 'consignado-catalog'
-#      path: '/consignado-catalog/**'
+      
+    simulacao:
+      service-id: 'consignado-simulacao'
+      path: '/consignado-simulacao/**'
