@@ -23,5 +23,8 @@
 hs_err_pid*
 replay_pid*
 
-#Hibernate log
+#Hibernate logs
 consignado-register/create.sql
+consignado-cliente/create.sql
+consignado-contrato/create.sql
+consignado-simulacao/create.sql
