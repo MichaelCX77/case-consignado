@@ -65,8 +65,7 @@ public class UserController {
 
 		User user = service.save(userDTO);
 		return ResponseEntity.status(HttpStatus.CREATED).body(new UserDTO(user));
-				
-				
+					
 	}
 	
 	@PutMapping(value ="/{id}")

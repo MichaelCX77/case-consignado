@@ -8,6 +8,6 @@ create table simulacao (
     simulacao_valor_solicitado decimal(9, 2) not null,
     simulacao_valor_total decimal(15, 2) not null,
     simulacao_valor_parcela decimal(9, 2) not null,
-    foreign key (taxa_convenio_tipo) references taxa_convenio (taxa_convenio_tipo),
-    foreign key (taxa_convenio_porcentagem) references taxa_convenio (taxa_convenio_porcentagem)
+    simulacao_quantidade_parcela integer not null,
+    foreign key (taxa_convenio_tipo) references taxa_convenio (taxa_convenio_tipo)
 )

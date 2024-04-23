@@ -13,7 +13,7 @@ public class CpfUtil {
 		
 		boolean isValid = true;
 		
-		isValid = (cpf != null && cpf != "") ? true : false;
+		isValid = (cpf != null && !cpf.isEmpty()) ? true : false;
 		isValid = (cpf.length() == 14 && isValid) ? true : false;
 		
 		if (isValid) {

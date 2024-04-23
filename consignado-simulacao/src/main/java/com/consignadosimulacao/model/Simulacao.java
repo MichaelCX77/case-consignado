@@ -42,9 +42,8 @@ public class Simulacao implements Serializable{
 	@JoinColumn(name = "taxa_convenio_tipo")
 	private TaxaConvenio taxaTipo;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "taxa_convenio_porcentagem")
-	private TaxaConvenio taxaPorcentagem;
+	@Column(name = "taxa_convenio_porcentagem")
+	private String taxaPorcentagem;
 	
 	@Column(name = "simulacao_valor_solicitado")
 	private Float vlrSolicicado;
@@ -54,5 +53,8 @@ public class Simulacao implements Serializable{
 	
 	@Column(name = "simulacao_valor_parcela")
 	private Float vlrParcela;
+	
+	@Column(name = "simulacao_quantidade_parcela")
+	private Integer qtdParcelas;
 
 }

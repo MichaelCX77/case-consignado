@@ -1,6 +1,6 @@
 package com.consignadocliente.model;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,18 +11,18 @@ public class ClienteDTO {
 
 	private Long id;
 	
-	@NotNull
+	@NotBlank(message= "Cpf é obrigatório")
 	private String cpf;
 	
-	@NotNull
+	@NotBlank(message= "Nome é obrigatório")
 	private String nome;
 	
-	@NotNull
+	@NotBlank(message= "Correntista é obrigatório")
 	private String correntista;
 	
 	private String segmento;
 	
-	@NotNull
+	@NotBlank(message= "Convenio é obrigatório")
 	private String convenio;
 	
 	public ClienteDTO (Cliente cliente) {
