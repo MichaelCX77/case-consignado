@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.consignadosimulacao.exception.ResourceNotFoundException;
+import com.consignadosimulacao.model.TaxaConvenio;
 import com.consignadosimulacao.model.TaxaConvenioDTO;
 import com.consignadosimulacao.repository.TaxaConvenioRepository;
 
@@ -16,9 +17,9 @@ public class TaxaConvenioService {
 	@Autowired
 	private TaxaConvenioRepository repository;
 
-	public TaxaConvenioDTO findByTaxaConvenioTipo(String taxaConvenioTipo) {
+	public TaxaConvenio findByTaxaConvenioTipo(String taxaConvenioTipo) {
 
-		Optional <TaxaConvenioDTO> taxaConvenio = repository.findByTaxaConvenioTipo(taxaConvenioTipo);
+		Optional <TaxaConvenio> taxaConvenio = repository.findByTaxaConvenioTipo(taxaConvenioTipo);
 		if (taxaConvenio.isPresent()) {
 			return taxaConvenio.get();
 		}

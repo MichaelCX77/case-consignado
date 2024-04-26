@@ -1,8 +1,9 @@
 package com.consignadosimulacao.model;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,31 +16,26 @@ public class SimulacaoDTO {
 	
 	private Long id;
 	
-	@NotBlank(message = "codigo é obrigatório")
 	private String codigo;
 	
-	private Timestamp data;
+	private LocalDateTime data;
 	
 	@NotBlank(message = "cpf é obrigatório")
 	private String cpf;
 	
-	@NotBlank(message = "código é obrigatório")
 	private String tipoTaxa;
 	
-	@NotBlank(message = "porcentagemTaxa é obrigatória")
-	private Double porcentagemTaxa;
+	private String porcentagemTaxa;
 	
-	@NotBlank(message = "valorSolicicado é obrigatório")
-	private Float valorSolicicado;
+	@NotNull(message = "valorSolicicado é obrigatório")
+	private Double valorSolicitado;
 	
-	@NotBlank(message = "valorTotal é obrigatório")
-	private Float valorTotal;
+	private Double valorTotal;
 	
-	@NotBlank(message = "valorParcela é obrigatório")
-	private Float valorParcela;
+	private Double valorParcela;
 	
-	@NotBlank(message = "parcelaDesejada é obrigatória")
-	private Integer parcelaDesejada;
+	@NotNull(message = "qtdParcelas é obrigatório")
+	private Integer qtdParcelas;
 	
 	public SimulacaoDTO(Simulacao simulacao) {
 		this.id = simulacao.getId();
@@ -47,11 +43,11 @@ public class SimulacaoDTO {
 		this.data = simulacao.getData();
 		this.cpf = simulacao.getCpf();
 		this.tipoTaxa = simulacao.getTaxaTipo().getTaxaConvenioTipo();
-		this.porcentagemTaxa = simulacao.getTaxaTipo().getTaxaConvenioPorcentagem();
-		this.valorSolicicado = simulacao.getVlrSolicicado();
-		this.valorTotal = simulacao.getVlrParcela();
+		this.porcentagemTaxa = simulacao.getTaxaPorcentagem();
+		this.valorSolicitado = simulacao.getVlrSolicicado();
+		this.valorTotal = simulacao.getVlrTotal();
 		this.valorParcela = simulacao.getVlrParcela();
-		this.parcelaDesejada = simulacao.getQtdParcelas();
+		this.qtdParcelas = simulacao.getQtdParcelas();
 	}
 	
 }
