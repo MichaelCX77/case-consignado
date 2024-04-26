@@ -1,7 +1,7 @@
 package com.consignadosimulacao.model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,13 +27,13 @@ public class Simulacao implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "simulacao_id")
-	private long id;
+	private Long id;
 	
 	@Column(name = "simulacao_codigo")
 	private String codigo;
 	
 	@Column(name = "simulacao_data")
-	private Timestamp data;
+	private LocalDateTime data;
 	
 	@Column(name = "simulacao_cliente_cpf")
 	private String cpf;
@@ -42,17 +42,19 @@ public class Simulacao implements Serializable{
 	@JoinColumn(name = "taxa_convenio_tipo")
 	private TaxaConvenio taxaTipo;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "taxa_convenio_porcentagem")
-	private TaxaConvenio taxaPorcentagem;
+	@Column(name = "taxa_convenio_porcentagem")
+	private String taxaPorcentagem;
 	
 	@Column(name = "simulacao_valor_solicitado")
-	private Float vlrSolicicado;
+	private Double vlrSolicicado;
 	
 	@Column(name = "simulacao_valor_total")
-	private Float vlrTotal;
+	private Double vlrTotal;
 	
 	@Column(name = "simulacao_valor_parcela")
-	private Float vlrParcela;
+	private Double vlrParcela;
+	
+	@Column(name = "simulacao_quantidade_parcela")
+	private Integer qtdParcelas;
 
 }

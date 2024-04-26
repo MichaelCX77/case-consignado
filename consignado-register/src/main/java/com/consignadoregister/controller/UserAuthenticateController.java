@@ -18,7 +18,7 @@ public class UserAuthenticateController {
 	@Autowired
 	private UserService service;
 	
-	@GetMapping
+	@GetMapping("/search")
 	public ResponseEntity<UserAuthenticateDTO> getUserAuthenticate(@RequestParam(required = false) String email) {
 
 		User user = service.findUserByEmailAuthenticate(email);

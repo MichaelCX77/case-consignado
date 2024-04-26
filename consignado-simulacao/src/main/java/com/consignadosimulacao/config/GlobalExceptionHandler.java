@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.consignadosimulacao.exception.BusinessException;
 import com.consignadosimulacao.exception.DataIntegrityViolationException;
 import com.consignadosimulacao.exception.ResourceNotFoundException;
 import com.consignadosimulacao.util.ErrorResponse;
@@ -63,6 +64,15 @@ public class GlobalExceptionHandler {
     public ErrorResponse handleHttpMessageNotReadableException(MismatchedInputException ex) {
     	
         return new ErrorResponse(HttpStatus.BAD_REQUEST.value(), "Requisição inválida : " + ex.getMessage(), System.currentTimeMillis());
+
+    }
+    
+    @ExceptionHandler(BusinessException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public ErrorResponse handleHttpBusinessException(BusinessException ex) {
+    	
+        return new ErrorResponse(HttpStatus.BAD_REQUEST.value(), "Erro de negócio : " + ex.getMessage(), System.currentTimeMillis());
 
     }
 }

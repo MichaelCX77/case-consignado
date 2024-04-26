@@ -19,6 +19,7 @@ public class UserDTO {
 	private String password;
 	
 	@Email(message = "Formato de e-mail inválido")
+	@NotBlank(message = "O email é obrigatório")
 	private String email;
 	
 	public UserDTO (User user) {

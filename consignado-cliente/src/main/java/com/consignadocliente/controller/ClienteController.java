@@ -26,7 +26,7 @@ public class ClienteController {
 	private ClienteService service;
 	
 	@GetMapping
-	public ResponseEntity<List<ClienteDTO>> getAllCliente (){
+	public ResponseEntity<List<ClienteDTO>> getAllClientes (){
 		
 		List<Cliente> listUsers = service.findAll();
 		return ResponseEntity.ok(convertToListClientesDTO(listUsers));
@@ -43,14 +43,11 @@ public class ClienteController {
 		}
 
 		Cliente cliente = service.findClienteByCpf(cpf);
-		
-		
+
 		return ResponseEntity.ok(new ClienteDTO(cliente));
 	}
 	
-	
-	
-	
+
 	private List<ClienteDTO> convertToListClientesDTO(List<Cliente> listClientes){
 		
 		List<ClienteDTO> listClientesDTO = new ArrayList<ClienteDTO>();

@@ -12,7 +12,7 @@ import com.consignadooauth.model.authenticate.UserAuthenticateDTO;
 @FeignClient(name = "consignado-register", path="/userauthenticate")
 public interface UserFeignClient {
 
-	@GetMapping
+	@GetMapping("/search")
 	public ResponseEntity<UserAuthenticateDTO> search(@RequestParam String email);
 	
 }
