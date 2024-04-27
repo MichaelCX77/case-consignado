@@ -1,7 +1,7 @@
 package com.consignadocontrato.model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,16 +24,16 @@ public class Contrato implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "contrato_id")
-	private long id;
+	private Long id;
 	
 	@Column(name = "contrato_codigo")
 	private String codigo;
 	
 	@Column(name = "contrato_data")
-	private Timestamp data;
+	private LocalDateTime data;
 	
 	@Column(name = "simulacao_codigo")
-	private String simulacaoCodigo;
+	private String codigoSimulacao;
 
 
 }
