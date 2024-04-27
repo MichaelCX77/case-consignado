@@ -37,14 +37,14 @@ public class ResourceServer extends ResourceServerConfigurerAdapter {
 				};
 		
 		URL_USER = new String[]{ 
-				"/consignado-reserve/**", 
-				"/consignado-payment/**",
-				"/consignado-catalog/**"
+				"/consignado-client/**",
+				"/consignado-simulacao/**",
+				"/consignado-contrato/**"
 				};
 		
 		URL_ADMIN = new String[]{ 
 				"/consignado-register/users/**",
-				"/consignado-register/roles/**" 
+				"/consignado-register/roles/**", 
 				};
 
 	}

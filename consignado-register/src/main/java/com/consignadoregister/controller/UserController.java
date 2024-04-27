@@ -37,7 +37,7 @@ public class UserController {
 	public ResponseEntity<List<UserDTO>> getAllUsers (){
 		
 		List<User> listUsers = service.findAll();
-		return ResponseEntity.ok(convertToUserDTO(listUsers));
+		return ResponseEntity.ok(convertToListUsersDTO(listUsers));
 	}
 	
 	@GetMapping(value = "/{id}")
@@ -65,8 +65,7 @@ public class UserController {
 
 		User user = service.save(userDTO);
 		return ResponseEntity.status(HttpStatus.CREATED).body(new UserDTO(user));
-				
-				
+					
 	}
 	
 	@PutMapping(value ="/{id}")
@@ -125,7 +124,7 @@ public class UserController {
 		return lisRolesDTO;
 	}
 	
-	private List<UserDTO> convertToUserDTO(List<User> listUsers){
+	private List<UserDTO> convertToListUsersDTO(List<User> listUsers){
 		
 		List<UserDTO> listUsersDTO = new ArrayList<UserDTO>();
 		

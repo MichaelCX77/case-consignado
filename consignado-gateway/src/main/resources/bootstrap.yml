@@ -10,12 +10,15 @@ eureka:
   client:
     service-url:
       defaultZone: 'http://localhost:8761/eureka'
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
 management:
   endpoints:
     web:
       exposure:
         include: '*'
+
 zuul:
   routes:
   
@@ -30,10 +33,10 @@ zuul:
       service-id: 'consignado-register'
       path: '/consignado-register/**'
       
-#    payment:
-#      service-id: 'consignado-payment'
-#      path: '/consignado-payment/**'
-#      
-#    catalog:
-#      service-id: 'consignado-catalog'
-#      path: '/consignado-catalog/**'
+    cliente:
+      service-id: 'consignado-cliente'
+      path: '/consignado-cliente/**'
+      
+    simulacao:
+      service-id: 'consignado-simulacao'
+      path: '/consignado-simulacao/**'
