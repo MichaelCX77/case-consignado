@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.consignadocontrato.exception.DataInconsistencyException;
 import com.consignadocontrato.exception.DataIntegrityViolationException;
 import com.consignadocontrato.exception.ResourceNotFoundException;
 import com.consignadocontrato.util.ErrorResponse;
@@ -63,6 +64,15 @@ public class GlobalExceptionHandler {
     public ErrorResponse handleHttpMessageNotReadableException(MismatchedInputException ex) {
     	
         return new ErrorResponse(HttpStatus.BAD_REQUEST.value(), "Requisição inválida : " + ex.getMessage(), System.currentTimeMillis());
+
+    }
+    
+    @ExceptionHandler(DataInconsistencyException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public ErrorResponse handleDataInconsistencyException(DataInconsistencyException ex) {
+    	
+        return new ErrorResponse(HttpStatus.BAD_REQUEST.value(), "Erro inconsistencia de dados : " + ex.getMessage(), System.currentTimeMillis());
 
     }
 }
