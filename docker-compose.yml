@@ -1,0 +1,159 @@
+version: '3.4'
+services:
+  consignado-eureka-server:
+    image: consignado-eureka-server
+    restart: always
+    build:
+      context: .
+      dockerfile: consignado-eureka-server/Dockerfile
+    working_dir: /app
+    environment:
+      TZ: America/Sao_Paulo
+    ports:
+      - "8761:8761"
+    command: mvn springboot:run
+    networks:
+      - consignado-network
+  consignado-config-server:
+    image: consignado-config-server
+    restart: always
+    build:
+      context: .
+      dockerfile: consignado-config-server/Dockerfile
+    working_dir: /app
+    environment:
+      TZ: America/Sao_Paulo
+    ports:
+      - "8888:8888"
+    command: mvn springboot:run
+    networks:
+      - consignado-network
+  consignado-api-gateway:
+    image: consignado-api-gateway
+    restart: always
+    build:
+      context: .
+      dockerfile: consignado-gateway/Dockerfile
+    working_dir: /app
+    environment:
+      TZ: America/Sao_Paulo
+    ports:
+      - "8765:8765"
+    command: mvn springboot:run
+    links:
+      - consignado-config-server
+      - consignado-eureka-server
+      - consignado-oauth
+      - consignado-cliente
+      - consignado-contrato
+      - consignado-simulacao
+      - consignado-register
+    depends_on:
+      - consignado-config-server
+      - consignado-eureka-server
+    networks:
+      - consignado-network
+  consignado-oauth:
+    image: consignado-oauth
+    restart: always
+    build:
+      context: .
+      dockerfile: consignado-oauth/Dockerfile
+    working_dir: /app
+    environment:
+      TZ: America/Sao_Paulo
+    ports:
+      - "0:8080"
+    command: mvn springboot:run
+    links:
+      - consignado-config-server
+      - consignado-eureka-server
+    depends_on:
+      - consignado-config-server
+      - consignado-eureka-server
+    networks:
+      - consignado-network
+  consignado-cliente:
+    image: consignado-cliente
+    restart: always
+    build:
+      context: .
+      dockerfile: consignado-cliente/Dockerfile
+    working_dir: /app
+    environment:
+      TZ: America/Sao_Paulo
+    ports:
+      - "0:8080"
+    command: mvn springboot:run
+    links:
+      - consignado-config-server
+      - consignado-eureka-server
+    depends_on:
+      - consignado-config-server
+      - consignado-eureka-server
+    networks:
+      - consignado-network
+  consignado-simulacao:
+    image: consignado-simulacao
+    restart: always
+    build:
+      context: .
+      dockerfile: consignado-simulacao/Dockerfile
+    working_dir: /app
+    environment:
+      TZ: America/Sao_Paulo
+    ports:
+      - "0:8080"
+    command: mvn springboot:run
+    links:
+      - consignado-config-server
+      - consignado-eureka-server
+    depends_on:
+      - consignado-config-server
+      - consignado-eureka-server
+    networks:
+      - consignado-network
+  consignado-contrato:
+    image: consignado-contrato
+    restart: always
+    build:
+      context: .
+      dockerfile: consignado-contrato/Dockerfile
+    working_dir: /app
+    environment:
+      TZ: America/Sao_Paulo
+    ports:
+      - "0:8080"
+    command: mvn springboot:run
+    links:
+      - consignado-config-server
+      - consignado-eureka-server
+    depends_on:
+      - consignado-config-server
+      - consignado-eureka-server
+    networks:
+      - consignado-network
+  consignado-register:
+    image: consignado-register
+    restart: always
+    build:
+      context: .
+      dockerfile: consignado-register/Dockerfile
+    working_dir: /app
+    environment:
+      TZ: America/Sao_Paulo
+    ports:
+      - "0:8080"
+    command: mvn springboot:run
+    links:
+      - consignado-config-server
+      - consignado-eureka-server
+    depends_on:
+      - consignado-config-server
+      - consignado-eureka-server
+    networks:
+      - consignado-network
+networks:
+    consignado-network:
+        driver: bridge
+        
