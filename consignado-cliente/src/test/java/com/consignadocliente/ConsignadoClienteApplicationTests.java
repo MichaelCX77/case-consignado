@@ -1,10 +1,10 @@
-package com.consignadoegister;
+package com.consignadocliente;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ConsignadoRegisterApplicationTests {
+class ConsignadoClienteApplicationTests {
 
 	@Test
 	void contextLoads() {

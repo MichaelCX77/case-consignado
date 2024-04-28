@@ -1,10 +1,10 @@
-package com.consignadooauth;
+package com.consignadocontrato;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ConsignadoOauthApplicationTests {
+class ConsignadoContratoApplicationTests {
 
 	@Test
 	void contextLoads() {
